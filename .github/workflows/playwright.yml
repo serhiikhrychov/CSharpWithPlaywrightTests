@@ -16,6 +16,10 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 7.0.x
+      - name: Install Xvfb
+        run: sudo apt-get install -y xvfb
+      - name: Run Playwright tests with Xvfb
+        run: xvfb-run dotnet test
       - run: dotnet build
       - name: Run your tests
         run: dotnet test
