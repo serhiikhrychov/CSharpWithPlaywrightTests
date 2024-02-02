@@ -26,7 +26,7 @@ public class SearchPanelTests
     {
         await App.MainPage.GoTo();
         await App.MainPage.SearchViaSearchFieldBySpecificData($"{Coordinates.LatitudePariserPlatzBerlin} {Coordinates.LongitudePariserPlatzBerlin}");
-        await App.MainPage.AsserAddressHasBeenFounded(Addresses.PariserPlatzAddressInBerlin);
+        await App.MainPage.AsserAddressHasBeenFounded(Places.PariserPlatzPlaceInBerlin);
     }
 
     [Test]
