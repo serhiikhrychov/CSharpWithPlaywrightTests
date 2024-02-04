@@ -1,14 +1,11 @@
 ﻿using Microsoft.Playwright;
-using Microsoft.Playwright.NUnit;
 
 namespace PlaywrightCSharp.Infrastructure.Pages
 {
-    public class MainPage : PageTest
+    public class MainPage
     {
         private IPage _page;
         public MainPage(IPage page) => _page = page;
-
-        //private ILocator SearchFeild() => _page.Locator("test");
         private ILocator _searchFeild => _page.Locator("#searchboxinput");
         private ILocator _magnifyingSearchIcon => _page.Locator("#searchbox-searchbutton");
         private ILocator _directionsBtn => _page.GetByRole(AriaRole.Button, new() { Name = "Directions" });
@@ -40,18 +37,17 @@ namespace PlaywrightCSharp.Infrastructure.Pages
         public async Task AsserAddressHasBeenFounded(string address)
         {
             var addressElement = _page.GetByText(address);
-            await Expect(addressElement).ToBeVisibleAsync();
+            await Assertions.Expect(addressElement).ToBeVisibleAsync();
         }
 
         public async Task AsserRouteIsBuilt()
         {
-            //var routeElement = _page.Locator("#section-directions-trip-title-0");
-            await Expect(_page.Locator("#section-directions-trip-title-0")).ToBeVisibleAsync();
+            await Assertions.Expect(_page.Locator("#section-directions-trip-title-0")).ToBeVisibleAsync();
         }
 
         public async Task AsserCantFindMessageIsDisplayed()
         {
-            await Expect(_page.GetByText("Google Maps can't find ")).ToBeVisibleAsync();
+            await Assertions.Expect(_page.GetByText("Google Maps can't find ")).ToBeVisibleAsync();
         }
     }
 }
