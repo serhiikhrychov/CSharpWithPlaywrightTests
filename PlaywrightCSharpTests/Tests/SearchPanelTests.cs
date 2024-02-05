@@ -16,32 +16,32 @@ public class SearchPanelTests
     [Test]
     public async Task Search_SearchViaSearchFieldByPlaceName_PlaceIsFound()
     {
-        await App.MainPage.GoTo();
-        await App.MainPage.SearchViaSearchFieldBySpecificData(Places.PariserPlatzPlaceInBerlin);
-        await App.MainPage.AsserAddressHasBeenFounded(Addresses.PariserPlatzAddressInBerlin);
+        await MainPage.GoTo();
+        await MainPage.SearchViaSearchFieldBySpecificData(Places.PariserPlatzPlaceInBerlin);
+        await MainPage.AsserAddressHasBeenFounded(Addresses.PariserPlatzAddressInBerlin);
     }
 
     [Test]
     public async Task Search_SearchViaSearchFieldByLatitudeAndLongitude_PlaceIsFound()
     {
-        await App.MainPage.GoTo();
-        await App.MainPage.SearchViaSearchFieldBySpecificData($"{Coordinates.LatitudePariserPlatzBerlin} {Coordinates.LongitudePariserPlatzBerlin}");
-        await App.MainPage.AsserAddressHasBeenFounded(Places.PariserPlatzPlaceInBerlin);
+        await MainPage.GoTo();
+        await MainPage.SearchViaSearchFieldBySpecificData($"{Coordinates.LatitudePariserPlatzBerlin} {Coordinates.LongitudePariserPlatzBerlin}");
+        await MainPage.AsserAddressHasBeenFounded(Places.PariserPlatzPlaceInBerlin);
     }
 
     [Test]
     public async Task Route_BuildARouteBetweenTwoCities_RouteIsBuilt()
     {
-        await App.MainPage.GoTo();
-        await App.MainPage.BuildTheRoute(Cities.PlaceAddressBerlin, Cities.PlaceAddressWarsaw);
-        await App.MainPage.AsserRouteIsBuilt();
+        await MainPage.GoTo();
+        await MainPage.BuildTheRoute(Cities.PlaceAddressBerlin, Cities.PlaceAddressWarsaw);
+        await MainPage.AsserRouteIsBuilt();
     }
 
     [Test]
     public async Task Search_SerchByInvalidValue_CantFindIsDisplayed()
     {
-        await App.MainPage.GoTo();
-        await App.MainPage.SearchViaSearchFieldBySpecificData(InvalidValues.BlankValue);
-        await App.MainPage.AsserCantFindMessageIsDisplayed();
+        await MainPage.GoTo();
+        await MainPage.SearchViaSearchFieldBySpecificData(InvalidValues.BlankValue);
+        await MainPage.AsserCantFindMessageIsDisplayed();
     }
 }

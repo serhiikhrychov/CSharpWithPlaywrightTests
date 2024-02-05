@@ -10,7 +10,6 @@ namespace PlaywrightCSharp.Infrastructure.Helpers
         {
             _config = new ConfigurationBuilder()
             .AddJsonFile(path)
-            .AddEnvironmentVariables()
             .Build();
 
             PlaywrightConfig = _config.Get<PlaywrightConfig>()!;

@@ -1,18 +1,23 @@
-﻿using Microsoft.Playwright;
+﻿using Microsoft.Extensions.Logging;
+using Microsoft.Playwright;
 
 namespace PlaywrightCSharp.Infrastructure.Pages
 {
     public class MainPage
     {
         private IPage _page;
-        public MainPage(IPage page) => _page = page;
+        private readonly ILogger<MainPage> _logger;
+
+        public MainPage(IPage page, ILogger<MainPage> logger)
+        {
+            _page = page;
+            _logger = logger;
+        }
+
         private ILocator _searchFeild => _page.Locator("#searchboxinput");
         private ILocator _magnifyingSearchIcon => _page.Locator("#searchbox-searchbutton");
         private ILocator _directionsBtn => _page.GetByRole(AriaRole.Button, new() { Name = "Directions" });
-
         private ILocator _toDestinationField => _page.GetByRole(AriaRole.Textbox, new() { Name = "Choose starting point, or click on the map..." });
-
-
 
         public async Task GoTo()
         {
